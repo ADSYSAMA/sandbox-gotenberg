@@ -217,7 +217,11 @@ final class GotenbergBundlePdfController extends AbstractController
         $this->stopwatch->start('webhook_generate_pdf', 'PDF');
 
         $pdf = $gotenberg->html()
-            ->webhookConfiguration('webhook_pdf_config')
+//            ->webhookConfiguration('webhook_pdf_config')
+            ->webhookExtraHeaders([
+                'variable1' => 'test1',
+                'variable2' => 'test2',
+            ])
             ->skipNetworkIdleEvent()
             ->content('pdf/gotenberg-template.html.twig')
             ->fileName('webhook_generated');
@@ -233,12 +237,13 @@ final class GotenbergBundlePdfController extends AbstractController
     public function gotenbergSymfonyBundleWebhookSuccessPdf(Request $request): Response
     {
         $this->logger->info('[GOTENBERG] - [WEBHOOK] - Réception du webhook SUCCESS de Gotenberg.');
+        $this->logger->info('[GOTENBERG] - [WEBHOOK] - Headers : ' . json_encode($request->headers->all()));
 
+        $fileName = $request->headers->get('filename');
         $fileFolder = sprintf('%s/%s',
             $this->projectDir,
             'public/dist/export',
         );
-        $fileName = "webhook_generated.pdf";
 
         // Empty current directory.
         $finder = new Finder();

@@ -8,7 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "dompdf/dompdf": "^3.1.4",
-        "gotenberg/gotenberg-php": "^2.15",
+        "gotenberg/gotenberg-php": "^2.15.1",
         "iio/libmergepdf": "^4.0.4",
         "sensiolabs/gotenberg-bundle": ">=1.1",
         "symfony/asset": "7.3.*",
@@ -17,13 +17,13 @@
         "symfony/flex": "^2.10",
         "symfony/framework-bundle": "7.3.*",
         "symfony/http-client": "7.3.*",
-        "symfony/monolog-bundle": "^4.0",
+        "symfony/monolog-bundle": "^4.0.1",
         "symfony/runtime": "7.3.*",
         "symfony/twig-bundle": "7.3.*",
         "symfony/yaml": "7.3.*"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.65",
+        "symfony/maker-bundle": "^1.65.1",
         "symfony/stopwatch": "7.3.*",
         "symfony/web-profiler-bundle": "7.3.*"
     },

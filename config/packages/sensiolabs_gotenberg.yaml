@@ -7,5 +7,5 @@ sensiolabs_gotenberg:
         url: "http://host.docker.internal:8500/gotenberg-symfony-bundle-webhook-success-pdf"
       error:
         url: "http://host.docker.internal:8500/gotenberg-symfony-bundle-webhook-error-pdf"
-#  default_options:
-#      webhook: 'webhook_pdf_config'
+  default_options:
+      webhook: 'webhook_pdf_config'
