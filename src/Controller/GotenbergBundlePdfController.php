@@ -239,7 +239,7 @@ final class GotenbergBundlePdfController extends AbstractController
         $this->logger->info('[GOTENBERG] - [WEBHOOK] - Réception du webhook SUCCESS de Gotenberg.');
         $this->logger->info('[GOTENBERG] - [WEBHOOK] - Headers : ' . json_encode($request->headers->all()));
 
-        $fileName = $request->headers->get('filename');
+        $fileName = $request->headers->get('filename') ?? 'webhook_success.pdf';
         $fileFolder = sprintf('%s/%s',
             $this->projectDir,
             'public/dist/export',
@@ -343,5 +343,46 @@ final class GotenbergBundlePdfController extends AbstractController
         $this->stopwatch->stop('massive_merge_pdf');
 
         return new Response('Votre pdf est en cours de création');
+    }
+
+    #[Route('/gotenberg-symfony-bundle-merge-load-testing-pdf', name: 'gotenberg_symfony_bundle_merge_load_testing_pdf')]
+    public function gotenbergSymfonyBundleMergeLoadTestingPdf(GotenbergPdfInterface $gotenberg): Response
+    {
+        $fileToMergeFolderPath = sprintf('%s/%s',
+            $this->projectDir,
+            'public/dist/example-files',
+        );
+        $fileFolder = sprintf('%s/%s',
+            $this->projectDir,
+            'public/dist/export',
+        );
+
+        // Empty current directory.
+        $finder = new Finder();
+        $finder->in($fileFolder)->depth('== 0');
+        foreach ($finder as $file) {
+            $this->filesystem->remove($file->getRealPath());
+        }
+
+        $n = 100;
+        for($i = 0; $i < $n; ++$i) {
+            $fileName = "merged_generated_$i";
+
+            // MERGE.
+            $this->stopwatch->start("$i-load_testing_merge_pdf", 'PDF');
+
+            $pdfMerged = $gotenberg->merge()
+                ->files(
+                    "$fileToMergeFolderPath/document-merge-1.pdf",
+                    "$fileToMergeFolderPath/document-merge-2.pdf",
+                    "$fileToMergeFolderPath/document-merge-3.pdf",
+                )
+                ->fileName($fileName)
+                ->generateAsync();
+
+            $this->stopwatch->stop("$i-load_testing_merge_pdf");
+        }
+
+        return new Response("$n pdfs créés");
     }
 }
