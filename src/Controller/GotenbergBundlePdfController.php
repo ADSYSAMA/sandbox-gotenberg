@@ -386,4 +386,42 @@ final class GotenbergBundlePdfController extends AbstractController
 
         return new Response("$n pdfs créés");
     }
+
+    #[Route('/gotenberg-symfony-bundle-generate-load-testing-pdf', name: 'gotenberg_symfony_bundle_generate_load_testing_pdf')]
+    public function gotenbergSymfonyBundleGenerateLoadTestingPdf(GotenbergPdfInterface $gotenberg): Response
+    {
+        $fileFolder = sprintf('%s/%s',
+            $this->projectDir,
+            'public/dist/export',
+        );
+
+        // Empty current directory.
+        $finder = new Finder();
+        $finder->in($fileFolder)->depth('== 0');
+        foreach ($finder as $file) {
+            $this->filesystem->remove($file->getRealPath());
+        }
+
+        $n = 100;
+        for($i = 0; $i < $n; ++$i) {
+            // GENERATE.
+            $this->stopwatch->start("$i-load_testing_generate_pdf", 'PDF');
+
+            $pdf = $gotenberg->html()
+                ->userPassword('Test123!')
+                ->skipNetworkIdleEvent(true)
+                ->content('pdf/gotenberg-template.html.twig')
+                ->fileName("load_testing_generated_$i")
+                ->processor(new FileProcessor(
+                    $this->filesystem,
+                    $fileFolder,
+                ))
+                ->generate()
+                ->process();
+
+            $this->stopwatch->stop("$i-load_testing_generate_pdf");
+        }
+
+        return new Response("$n pdfs créés");
+    }
 }
