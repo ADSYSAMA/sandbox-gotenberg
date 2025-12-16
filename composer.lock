@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de9df672da8ce732ddcbdc56f966c2a2",
+    "content-hash": "e1cd2575fd1357dc9052b5c47bc7d389",
     "packages": [
         {
             "name": "dompdf/dompdf",
@@ -1139,16 +1139,16 @@
         },
         {
             "name": "sensiolabs/gotenberg-bundle",
-            "version": "v1.1.0",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/GotenbergBundle.git",
-                "reference": "c39f671babdd4aaca6656525af965e3260d1d0a7"
+                "reference": "8297ed09ced7b708eea173db6e026faf56cbee9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/GotenbergBundle/zipball/c39f671babdd4aaca6656525af965e3260d1d0a7",
-                "reference": "c39f671babdd4aaca6656525af965e3260d1d0a7",
+                "url": "https://api.github.com/repos/sensiolabs/GotenbergBundle/zipball/8297ed09ced7b708eea173db6e026faf56cbee9c",
+                "reference": "8297ed09ced7b708eea173db6e026faf56cbee9c",
                 "shasum": ""
             },
             "require": {
@@ -1199,6 +1199,7 @@
                 "symfony/routing": "Allows you to use webhook to generate URL or route.",
                 "symfony/twig-bundle": "Allows you to use Twig to render templates into PDF."
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
@@ -1215,7 +1216,7 @@
                     "email": "steven.renaux@sensiolabs.com"
                 }
             ],
-            "description": "Gotenberg support for Symfony",
+            "description": "A Symfony bundle that provides seamless integration with Gotenberg for generating PDFs and screenshots from various sources (HTML, Markdown, Office documents, URLs) with a clean, builder-based API.",
             "keywords": [
                 "Gotenberg",
                 "bundle",
@@ -1226,9 +1227,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sensiolabs/GotenbergBundle/issues",
-                "source": "https://github.com/sensiolabs/GotenbergBundle/tree/v1.1.0"
+                "source": "https://github.com/sensiolabs/GotenbergBundle/tree/1.x"
             },
-            "time": "2025-11-27T09:40:05+00:00"
+            "time": "2025-12-15T16:40:33+00:00"
         },
         {
             "name": "setasign/fpdi",
@@ -4639,16 +4640,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.22.1",
+            "version": "v3.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "1de2ec1fc43ab58a4b7e80b214b96bfc895750f3"
+                "reference": "946ddeafa3c9f4ce279d1f34051af041db0e16f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/1de2ec1fc43ab58a4b7e80b214b96bfc895750f3",
-                "reference": "1de2ec1fc43ab58a4b7e80b214b96bfc895750f3",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/946ddeafa3c9f4ce279d1f34051af041db0e16f2",
+                "reference": "946ddeafa3c9f4ce279d1f34051af041db0e16f2",
                 "shasum": ""
             },
             "require": {
@@ -4702,7 +4703,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.22.1"
+                "source": "https://github.com/twigphp/Twig/tree/v3.22.2"
             },
             "funding": [
                 {
@@ -4714,7 +4715,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-16T16:01:12+00:00"
+            "time": "2025-12-14T11:28:47+00:00"
         }
     ],
     "packages-dev": [
@@ -5183,7 +5184,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "sensiolabs/gotenberg-bundle": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

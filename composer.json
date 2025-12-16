@@ -10,7 +10,7 @@
         "dompdf/dompdf": "^3.1.4",
         "gotenberg/gotenberg-php": "^2.15.1",
         "iio/libmergepdf": "^4.0.4",
-        "sensiolabs/gotenberg-bundle": ">=1.1",
+        "sensiolabs/gotenberg-bundle": "1.x-dev",
         "symfony/asset": "7.3.*",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",

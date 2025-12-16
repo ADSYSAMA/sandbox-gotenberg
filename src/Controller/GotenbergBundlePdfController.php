@@ -33,6 +33,7 @@ final class GotenbergBundlePdfController extends AbstractController
         $this->stopwatch->start('generate_pdf', 'PDF');
 
         $pdf = $gotenberg->html()
+            ->userPassword('Test123!')
             ->skipNetworkIdleEvent(true)
             ->content('pdf/gotenberg-template.html.twig')
             ->generate();
@@ -217,7 +218,7 @@ final class GotenbergBundlePdfController extends AbstractController
         $this->stopwatch->start('webhook_generate_pdf', 'PDF');
 
         $pdf = $gotenberg->html()
-//            ->webhookConfiguration('webhook_pdf_config')
+            ->webhookConfiguration('webhook_pdf_config')
             ->webhookExtraHeaders([
                 'variable1' => 'test1',
                 'variable2' => 'test2',
